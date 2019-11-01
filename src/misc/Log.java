@@ -26,9 +26,7 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 
 import org.apache.log4j.PropertyConfigurator;
 
@@ -40,11 +38,9 @@ public class Log
 	private static byte level = DEBUG;
 	private static boolean single = false;
 	private static boolean enableSlf4j = false;
-	private static AtomicBoolean thread = new AtomicBoolean(false);
 	private static byte output = Log.OUTPUT_STDOUT;
 	private static String path = "./";
-	private static Consumer<String> cb = null;
-	private static final ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
+	private static BiConsumer<Byte, String> cb = null;
 	public static final ConcurrentHashMap<String, String> ignores = new ConcurrentHashMap<String, String>();
 	private static Properties pro4log4j = new Properties();
 
@@ -68,8 +64,6 @@ public class Log
 	{
 		Log.path = path == null ? Log.path : path;
 		Log.output = (byte) o;
-		if (Log.isOutPutFile() && !Log.thread.getAndSet(true))
-			new Thread(() -> Log.svc()).start();
 	}
 
 	public static final void setLevel(String lev)
@@ -373,13 +367,17 @@ public class Log
 	public static final void setOutput(int output)
 	{
 		Log.output = (byte) output;
-		if ((Log.output & Log.OUTPUT_FILE) != 0 && !Log.thread.getAndSet(true))
-			new Thread(() -> Log.svc()).start();
 	}
 
-	public static final void outputNet(Consumer<String> cb)
+	public static final void stream(BiConsumer<Byte, String> cb)
 	{
 		Log.cb = cb;
+	}
+
+	public static final void pub2stream(byte lev, String str)
+	{
+		if (Log.cb != null)
+			Misc.exeBiConsumer(Log.cb, lev, str);
 	}
 
 	public static final void ignoreClass(String cls)
@@ -389,8 +387,10 @@ public class Log
 
 	public static final void log4log4j(byte lev, String str)
 	{
+		if (Log.cb != null)
+			Misc.exeBiConsumer(Log.cb, lev, str);
 		if (Log.isOutPutFile())
-			Log.queue.add(str); 
+			Log.write2File(str);
 		if (Log.isOutPutStdout())
 		{
 			if (lev < Log.WARN)
@@ -459,31 +459,16 @@ public class Log
 		ps.printf(format, args);
 		ps.printf("\n");
 		String str = bos.toString();
-		if (Log.isOutPutFile() || Log.cb != null)
-			Log.queue.add(str); 
+		if (Log.cb != null)
+			Misc.exeBiConsumer(Log.cb, lev, str);
+		if (Log.isOutPutFile())
+			Log.write2File(str);
 		if (Log.isOutPutStdout())
 		{
 			if (lev < Log.WARN)
 				System.out.print(str);
 			else
 				System.err.print(str);
-		}
-	}
-
-	private static final void svc()
-	{
-		while (true)
-		{
-			String str = Log.queue.poll();
-			if (str == null)
-			{
-				Misc.sleep(500);
-				continue;
-			}
-			if (Log.isOutPutFile())
-				Log.write2File(str);
-			if (Log.cb != null)
-				Misc.exeConsumer(Log.cb, str);
 		}
 	}
 

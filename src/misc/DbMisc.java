@@ -610,7 +610,7 @@ public class DbMisc
 			else if (v instanceof Date)
 				strb.append("'").append(DateMisc.to_yyyy_mm_dd_hh_mm_ss((Date) v)).append("'");
 			else if (v instanceof byte[])
-				strb.append("(").append(Net.byte2HexStrSpace((byte[]) v)).append(")");
+				strb.append("(").append(Net.byte2hexStrSpace((byte[]) v)).append(")");
 			else
 				Log.fault("it`s a bug, type: %s, stack: %s", v.getClass().getName(), Misc.getStackInfo());
 			if (k < arr.length)

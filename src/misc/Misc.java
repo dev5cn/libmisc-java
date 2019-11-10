@@ -305,7 +305,7 @@ public final class Misc
 	}
 
 	
-	public static final List<String> parseStr2List(String str)
+	public static final List<String> parseStr2list(String str)
 	{
 		try
 		{
@@ -327,7 +327,7 @@ public final class Misc
 		}
 	}
 
-	public static final String intArr2String(int arr[])
+	public static final String intArr2string(int arr[])
 	{
 		StringBuilder strb = new StringBuilder();
 		for (int i = 0; i < arr.length; i++)
@@ -335,7 +335,7 @@ public final class Misc
 		return strb.substring(0, strb.length() - 1);
 	}
 
-	public static final String intArr2String(List<Integer> arr)
+	public static final String intArr2string(List<Integer> arr)
 	{
 		StringBuilder strb = new StringBuilder();
 		for (Integer str : arr)
@@ -343,7 +343,7 @@ public final class Misc
 		return strb.substring(0, strb.length() - 1);
 	}
 
-	public static final String strArr2StringWithSQ(String[] arr)
+	public static final String strArr2stringWithSQ(String[] arr)
 	{
 		StringBuilder strb = new StringBuilder();
 		for (int i = 0; i < arr.length; i++)
@@ -351,7 +351,7 @@ public final class Misc
 		return strb.substring(0, strb.length() - 1);
 	}
 
-	public static final String strArr2StringWithSQ(List<String> arr)
+	public static final String strArr2stringWithSQ(List<String> arr)
 	{
 		StringBuilder strb = new StringBuilder();
 		for (String str : arr)
@@ -359,7 +359,7 @@ public final class Misc
 		return strb.substring(0, strb.length() - 1);
 	}
 
-	public static final String strArr2StringWithNoSQ(List<String> arr)
+	public static final String strArr2stringWithNoSQ(List<String> arr)
 	{
 		StringBuilder strb = new StringBuilder();
 		for (String str : arr)
@@ -446,7 +446,7 @@ public final class Misc
 		Misc.printf(Net.printBytes(by, offset, length));
 	}
 
-	public static final String printf2Str(String format, Object... args)
+	public static final String printf2str(String format, Object... args)
 	{
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		PrintStream ps = new PrintStream(bos);
@@ -919,7 +919,7 @@ public final class Misc
 		return (T) o;
 	}
 
-	public static final <T> List<T> json2List(String json, Class<T> cls)
+	public static final <T> List<T> json2list(String json, Class<T> cls)
 	{
 		try
 		{
@@ -935,7 +935,7 @@ public final class Misc
 		}
 	}
 
-	public static final <T> T json2Obj(String json, Class<T> t)
+	public static final <T> T json2obj(String json, Class<T> t)
 	{
 		try
 		{

@@ -108,12 +108,12 @@ public final class Net
 		}
 	}
 
-	public static final short[] byteArr2Short(byte[] by)
+	public static final short[] byteArr2short(byte[] by)
 	{
-		return Net.byteArr2Short(by, 0, by.length);
+		return Net.byteArr2short(by, 0, by.length);
 	}
 
-	public static final short[] byteArr2Short(byte[] by, int ofst, int len)
+	public static final short[] byteArr2short(byte[] by, int ofst, int len)
 	{
 		short arr[] = new short[by.length / 2];
 		int c = 0;
@@ -192,7 +192,7 @@ public final class Net
 		return (short) (((h >> 8) & 0xFF) + (((h & 0xFF) << 8) & 0xFF00));
 	}
 
-	public static final byte[] charArr2Byte(char[] arr)
+	public static final byte[] charArr2byte(char[] arr)
 	{
 		byte by[] = new byte[arr.length];
 		for (int i = 0; i < arr.length; ++i)
@@ -327,12 +327,12 @@ public final class Net
 		}
 	}
 
-	public static final String byte2HexStr(byte by[])
+	public static final String byte2hexStr(byte by[])
 	{
-		return Net.byte2HexStr(by, 0, by.length);
+		return Net.byte2hexStr(by, 0, by.length);
 	}
 
-	public static final String byte2HexStr(byte by[], int ofst, int len)
+	public static final String byte2hexStr(byte by[], int ofst, int len)
 	{
 		if (len < 1)
 			return "";
@@ -343,12 +343,12 @@ public final class Net
 		return bos.toString();
 	}
 
-	public static final String byte2HexStrSpace(byte by[])
+	public static final String byte2hexStrSpace(byte by[])
 	{
-		return Net.byte2HexStrSpace(by, 0, by.length);
+		return Net.byte2hexStrSpace(by, 0, by.length);
 	}
 
-	public static final String byte2HexStrSpace(byte by[], int ofst, int len)
+	public static final String byte2hexStrSpace(byte by[], int ofst, int len)
 	{
 		if (len < 1)
 			return "";
@@ -414,12 +414,12 @@ public final class Net
 		return bos.toString();
 	}
 
-	public static final String short2HexStrSpace(short arr[])
+	public static final String short2hexStrSpace(short arr[])
 	{
-		return Net.short2HexStrSpace(arr, 0, arr.length);
+		return Net.short2hexStrSpace(arr, 0, arr.length);
 	}
 
-	public static final String short2HexStrSpace(short arr[], int ofst, int len)
+	public static final String short2hexStrSpace(short arr[], int ofst, int len)
 	{
 		if (len < 1)
 			return "";
@@ -442,7 +442,7 @@ public final class Net
 		return by;
 	}
 
-	public static final String byte2BinStr(byte val)
+	public static final String byte2binStr(byte val)
 	{
 		String str = Integer.toBinaryString(val);
 		int len = str.length();
@@ -454,7 +454,7 @@ public final class Net
 		return new String(chr) + str;
 	}
 
-	public static final String short2BinStr(short val)
+	public static final String short2binStr(short val)
 	{
 		String str = Integer.toBinaryString(val);
 		int len = str.length();
@@ -466,7 +466,7 @@ public final class Net
 		return new String(chr) + str;
 	}
 
-	public static final String int2BinStr(int val)
+	public static final String int2binStr(int val)
 	{
 		String str = Integer.toBinaryString(val);
 		int len = str.length();
@@ -478,7 +478,7 @@ public final class Net
 		return new String(chr) + str;
 	}
 
-	public static final String long2BinStr(long val)
+	public static final String long2binStr(long val)
 	{
 		String str = Long.toBinaryString(val);
 		int len = str.length();
@@ -535,7 +535,7 @@ public final class Net
 	{
 		if (by.length > 9) 
 			return 0L;
-		return Misc.forceLongO(Net.byte2HexStr(Net.reversal(by)));
+		return Misc.forceLongO(Net.byte2hexStr(Net.reversal(by)));
 	}
 
 	public static final void readAndDiscard(SocketChannel sc, ByteBuffer bb)

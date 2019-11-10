@@ -174,7 +174,7 @@ public class Crypto
 
 	public static final String aesEnc2StrLowerCase(byte[] key, byte[] org)
 	{
-		return Net.byte2HexStr(Crypto.aesEnc(key, org)).toLowerCase();
+		return Net.byte2hexStr(Crypto.aesEnc(key, org)).toLowerCase();
 	}
 
 	public static final String aesEnc2StrLowerCase(String key, String org)
@@ -326,22 +326,22 @@ public class Crypto
 
 	public static final String md5StrUpperCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.md5(by));
+		return Net.byte2hexStr(Crypto.md5(by));
 	}
 
 	public static final String md5StrUpperCase(String str)
 	{
-		return Net.byte2HexStr(Crypto.md5(str.getBytes()));
+		return Net.byte2hexStr(Crypto.md5(str.getBytes()));
 	}
 
 	public static final String md5StrLowerCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.md5(by)).toLowerCase();
+		return Net.byte2hexStr(Crypto.md5(by)).toLowerCase();
 	}
 
 	public static final String md5StrLowerCase(String str)
 	{
-		return Net.byte2HexStr(Crypto.md5(str.getBytes())).toLowerCase();
+		return Net.byte2hexStr(Crypto.md5(str.getBytes())).toLowerCase();
 	}
 
 	public static final byte[] sha1(byte[] by)
@@ -359,12 +359,12 @@ public class Crypto
 
 	public static final String sha1StrUpperCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.sha1(by));
+		return Net.byte2hexStr(Crypto.sha1(by));
 	}
 
 	public static final String sha1StrLowerCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.sha1(by)).toLowerCase();
+		return Net.byte2hexStr(Crypto.sha1(by)).toLowerCase();
 	}
 
 	public static final byte[] sha256(byte[] by)
@@ -382,12 +382,12 @@ public class Crypto
 
 	public static final String sha256StrUpperCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.sha256(by));
+		return Net.byte2hexStr(Crypto.sha256(by));
 	}
 
 	public static final String sha256StrLowerCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.sha256(by)).toLowerCase();
+		return Net.byte2hexStr(Crypto.sha256(by)).toLowerCase();
 	}
 
 	public static final String sha256StrLowerCase(String str)
@@ -410,12 +410,12 @@ public class Crypto
 
 	public static final String sha512StrUpperCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.sha512(by));
+		return Net.byte2hexStr(Crypto.sha512(by));
 	}
 
 	public static final String sha512StrLowerCase(byte by[])
 	{
-		return Net.byte2HexStr(Crypto.sha512(by)).toLowerCase();
+		return Net.byte2hexStr(Crypto.sha512(by)).toLowerCase();
 	}
 
 	public static final String sha512StrLowerCase(String str)

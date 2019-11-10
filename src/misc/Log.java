@@ -415,7 +415,7 @@ public class Log
 			tmp = "WARN";
 		else
 			tmp = "ERROR";
-		Log.pro4log4j.setProperty("log4j.rootLogger", Misc.printf2Str("%s,D", tmp));
+		Log.pro4log4j.setProperty("log4j.rootLogger", Misc.printf2str("%s,D", tmp));
 		Log.pro4log4j.setProperty("log4j.appender.D", "org.apache.log4j.ConsoleAppender");
 		Log.pro4log4j.setProperty("log4j.appender.D.layout", "misc.Log4jAdapter  ");
 		PropertyConfigurator.configure(Log.pro4log4j);
